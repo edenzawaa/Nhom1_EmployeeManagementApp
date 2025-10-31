@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.EmployeeController"
+            prefWidth="880" prefHeight="650"
+            style="-fx-background-color: #ecf0f1;">
+
+    <VBox spacing="15" alignment="TOP_CENTER" prefWidth="880" prefHeight="650" padding="20">
+        
+        <!-- TIÊU ĐỀ -->
+        <Label text=" QUẢN LÝ NHÂN VIÊN"
+               style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+
+        <Separator prefWidth="600" />
+
+        <HBox spacing="20" alignment="CENTER">
+            <!--  FORM NHẬP DỮ LIỆU -->
+            <VBox spacing="10" alignment="TOP_LEFT" style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: #bdc3c7; -fx-border-radius: 10; -fx-background-radius: 10;">
+                <Label text="Thông tin nhân viên" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+
+                <GridPane hgap="10" vgap="10">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="RIGHT" />
+                        <ColumnConstraints prefWidth="200" />
+                    </columnConstraints>
+
+                    <Label text="ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtEmployeeId" GridPane.rowIndex="0" GridPane.columnIndex="1" promptText="Tự động (nếu thêm mới)" editable="false"/>
+
+                    <Label text="Họ và tên:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtEmployeeName" GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="Nhập tên nhân viên"/>
+
+                    <Label text="Phòng ban:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtDepartment" GridPane.rowIndex="2" GridPane.columnIndex="1" promptText="VD: Kỹ thuật"/>
+
+                    <Label text="Email:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtEmail" GridPane.rowIndex="3" GridPane.columnIndex="1" promptText="VD: example@gmail.com"/>
+
+                    <Label text="Chức vụ:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtPosition" GridPane.rowIndex="4" GridPane.columnIndex="1" promptText="VD: Nhân viên, Quản lý..."/>
+
+                    <Label text="Lương (VNĐ):" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                    <TextField fx:id="txtSalary" GridPane.rowIndex="5" GridPane.columnIndex="1" promptText="VD: 10000000"/>
+                </GridPane>
+
+                <!-- CÁC NÚT CHỨC NĂNG -->
+                <HBox spacing="10" alignment="CENTER_RIGHT" padding="10">
+                    <Button fx:id="btnAdd" text="Thêm" onAction="#handleAddEmployee"
+                            style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold;" />
+                    <Button fx:id="btnUpdate" text="Sửa" onAction="#handleUpdateEmployee"
+                            style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-weight: bold;" />
+                    <Button fx:id="btnDelete" text="Xóa" onAction="#handleDeleteEmployee"
+                            style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;" />
+                    <Button fx:id="btnClear" text="Làm mới" onAction="#handleClear"
+                            style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold;" />
+                </HBox>
+            </VBox>
+
+            <!-- BẢNG DANH SÁCH NHÂN VIÊN -->
+            <VBox spacing="10" alignment="TOP_CENTER">
+                <Label text="Danh sách nhân viên" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+
+                <TableView fx:id="employeeTable" prefWidth="550" prefHeight="500"
+                           onMouseClicked="#handleRowSelect"
+                           style="-fx-background-color: white; -fx-border-color: #bdc3c7;">
+                    <columns>
+                        <TableColumn fx:id="colId" text="ID" prefWidth="50" />
+                        <TableColumn fx:id="colName" text="Họ và tên" prefWidth="150" />
+                        <TableColumn fx:id="colDepartment" text="Phòng ban" prefWidth="100" />
+                        <TableColumn fx:id="colEmail" text="Email" prefWidth="150" />
+                        <TableColumn fx:id="colPosition" text="Chức vụ" prefWidth="100" />
+                        <TableColumn fx:id="colSalary" text="Lương" prefWidth="100" />
+                    </columns>
+                </TableView>
+            </VBox>
+        </HBox>
+    </VBox>
+</AnchorPane>
